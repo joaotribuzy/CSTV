@@ -20,9 +20,12 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         List($viewModel.matches) { match in
             Text(match.title.wrappedValue+"\(match.id)")
         }
+        .task {
+            await viewModel.requestMatches()
+        }
     }
 }
 
 #Preview {
-    MatchesListView(viewModel: MatchesListViewModel())
+    MatchesListView(viewModel: MatchesListViewModel(matchService: MatchService()))
 }

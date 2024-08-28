@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CSTVApp: App {
+    
+    private let matchService: MatchService = MatchService()
+    
     var body: some Scene {
         WindowGroup {
-            MatchesListView(viewModel: MatchesListViewModel())
+            MatchesListView(viewModel: MatchesListViewModel(matchService: matchService))
         }
     }
 }

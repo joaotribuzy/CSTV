@@ -7,20 +7,21 @@
 
 import Foundation
 
-final class MatchesListViewModel: MatchesListDataSourceable {
+final class MatchesListViewModel<Service: MatchServicing>: MatchesListDataSourceable {
     
-    var matches: [Match] = [
-        Match(id: 0, title: "Match"),
-        Match(id: 1, title: "Match"),
-        Match(id: 2, title: "Match"),
-        Match(id: 3, title: "Match"),
-        Match(id: 4, title: "Match"),
-        Match(id: 5, title: "Match"),
-    ]
+    @Published var matches: [Match] = []
+    private let matchService: Service
     
-    init() {}
+    init(matchService: Service) {
+        self.matchService = matchService
+    }
     
     func requestMatches() async {
-        
+        do {
+            matches = try await matchService.fetchMatches()
+        } catch {
+            print(error)
+        }
     }
+    
 }

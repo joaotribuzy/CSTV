@@ -14,6 +14,7 @@
 		813200462C7FAB4E006CAD53 /* MatchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200452C7FAB4E006CAD53 /* MatchesListView.swift */; };
 		813200492C7FAC3A006CAD53 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200482C7FAC3A006CAD53 /* Match.swift */; };
 		8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */; };
+		8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132004D2C7FB1C7006CAD53 /* MatchService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		813200452C7FAB4E006CAD53 /* MatchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListView.swift; sourceTree = "<group>"; };
 		813200482C7FAC3A006CAD53 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListViewModel.swift; sourceTree = "<group>"; };
+		8132004D2C7FB1C7006CAD53 /* MatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				813200182C7FA522006CAD53 /* CSTVApp.swift */,
 				813200422C7FA9EC006CAD53 /* Screens */,
 				813200472C7FAC28006CAD53 /* Model */,
+				8132004C2C7FB0C8006CAD53 /* Service */,
 				813200432C7FAADE006CAD53 /* Resources */,
 			);
 			path = CSTV;
@@ -133,6 +136,14 @@
 				813200482C7FAC3A006CAD53 /* Match.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8132004C2C7FB0C8006CAD53 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8132004D2C7FB1C7006CAD53 /* MatchService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +249,7 @@
 				813200462C7FAB4E006CAD53 /* MatchesListView.swift in Sources */,
 				813200192C7FA522006CAD53 /* CSTVApp.swift in Sources */,
 				8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */,
+				8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */,
 				813200492C7FAC3A006CAD53 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
