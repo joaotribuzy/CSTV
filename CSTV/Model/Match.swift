@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Match: Identifiable {
+struct Match: Identifiable, Decodable {
     var id: Int
     var title: String
 }

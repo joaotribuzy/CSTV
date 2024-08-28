@@ -15,6 +15,7 @@
 		813200492C7FAC3A006CAD53 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200482C7FAC3A006CAD53 /* Match.swift */; };
 		8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */; };
 		8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132004D2C7FB1C7006CAD53 /* MatchService.swift */; };
+		813200522C7FBF09006CAD53 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200512C7FBF09006CAD53 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		813200482C7FAC3A006CAD53 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListViewModel.swift; sourceTree = "<group>"; };
 		8132004D2C7FB1C7006CAD53 /* MatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
+		813200512C7FBF09006CAD53 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				8132004D2C7FB1C7006CAD53 /* MatchService.swift */,
+				813200512C7FBF09006CAD53 /* NetworkManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813200522C7FBF09006CAD53 /* NetworkManager.swift in Sources */,
 				813200462C7FAB4E006CAD53 /* MatchesListView.swift in Sources */,
 				813200192C7FA522006CAD53 /* CSTVApp.swift in Sources */,
 				8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */,

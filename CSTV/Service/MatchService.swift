@@ -13,15 +13,16 @@ protocol MatchServicing {
 
 final class MatchService: MatchServicing {
     
+    private(set) var networkManager: NetworkManaging
+    private let baseUrl = ""
+    
+    init(networkManager: NetworkManaging) {
+        self.networkManager = networkManager
+    }
+    
     func fetchMatches() async throws -> [Match] {
-        [
-            Match(id: 0, title: "Match"),
-            Match(id: 1, title: "Match"),
-            Match(id: 2, title: "Match"),
-            Match(id: 3, title: "Match"),
-            Match(id: 4, title: "Match"),
-            Match(id: 5, title: "Match")
-        ]
+        let url = URL(string: "\(baseUrl)/matches")
+        return try await networkManager.performRequest(url: url, type: [Match].self)
     }
     
 }

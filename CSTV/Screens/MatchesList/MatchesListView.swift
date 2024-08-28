@@ -27,5 +27,5 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
 }
 
 #Preview {
-    MatchesListView(viewModel: MatchesListViewModel(matchService: MatchService()))
+    MatchesListView(viewModel: MatchesListViewModel(matchService: MatchService(networkManager: NetworkManager(urlSession: URLSession.shared))))
 }
