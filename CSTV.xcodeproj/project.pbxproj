@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		813200192C7FA522006CAD53 /* CSTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200182C7FA522006CAD53 /* CSTVApp.swift */; };
-		8132001B2C7FA522006CAD53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132001A2C7FA522006CAD53 /* ContentView.swift */; };
 		8132001D2C7FA523006CAD53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8132001C2C7FA523006CAD53 /* Assets.xcassets */; };
 		813200202C7FA523006CAD53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8132001F2C7FA523006CAD53 /* Preview Assets.xcassets */; };
 		8132002A2C7FA523006CAD53 /* CSTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200292C7FA523006CAD53 /* CSTVTests.swift */; };
+		813200462C7FAB4E006CAD53 /* MatchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200452C7FAB4E006CAD53 /* MatchesListView.swift */; };
+		813200492C7FAC3A006CAD53 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200482C7FAC3A006CAD53 /* Match.swift */; };
+		8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,11 +29,13 @@
 /* Begin PBXFileReference section */
 		813200152C7FA522006CAD53 /* CSTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813200182C7FA522006CAD53 /* CSTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApp.swift; sourceTree = "<group>"; };
-		8132001A2C7FA522006CAD53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8132001C2C7FA523006CAD53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8132001F2C7FA523006CAD53 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		813200252C7FA523006CAD53 /* CSTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		813200292C7FA523006CAD53 /* CSTVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVTests.swift; sourceTree = "<group>"; };
+		813200452C7FAB4E006CAD53 /* MatchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListView.swift; sourceTree = "<group>"; };
+		813200482C7FAC3A006CAD53 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				813200182C7FA522006CAD53 /* CSTVApp.swift */,
-				8132001A2C7FA522006CAD53 /* ContentView.swift */,
-				8132001C2C7FA523006CAD53 /* Assets.xcassets */,
-				8132001E2C7FA523006CAD53 /* Preview Content */,
+				813200422C7FA9EC006CAD53 /* Screens */,
+				813200472C7FAC28006CAD53 /* Model */,
+				813200432C7FAADE006CAD53 /* Resources */,
 			);
 			path = CSTV;
 			sourceTree = "<group>";
@@ -95,6 +99,40 @@
 				813200292C7FA523006CAD53 /* CSTVTests.swift */,
 			);
 			path = CSTVTests;
+			sourceTree = "<group>";
+		};
+		813200422C7FA9EC006CAD53 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				813200442C7FAB39006CAD53 /* MatchesList */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		813200432C7FAADE006CAD53 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8132001C2C7FA523006CAD53 /* Assets.xcassets */,
+				8132001E2C7FA523006CAD53 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		813200442C7FAB39006CAD53 /* MatchesList */ = {
+			isa = PBXGroup;
+			children = (
+				813200452C7FAB4E006CAD53 /* MatchesListView.swift */,
+				8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */,
+			);
+			path = MatchesList;
+			sourceTree = "<group>";
+		};
+		813200472C7FAC28006CAD53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				813200482C7FAC3A006CAD53 /* Match.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +235,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8132001B2C7FA522006CAD53 /* ContentView.swift in Sources */,
+				813200462C7FAB4E006CAD53 /* MatchesListView.swift in Sources */,
 				813200192C7FA522006CAD53 /* CSTVApp.swift in Sources */,
+				8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */,
+				813200492C7FAC3A006CAD53 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CSTV/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CSTV/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = S67GUZ7P6T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -376,7 +416,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CSTV/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CSTV/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = S67GUZ7P6T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
