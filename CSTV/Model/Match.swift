@@ -9,4 +9,9 @@ import Foundation
 
 struct Match: Identifiable, Decodable {
     var id: Int
+    var name: String
+    var league: League
+    var status: Status
+    var serie: Serie
+    var opponents: [OpponentWrapper]
 }

@@ -16,6 +16,11 @@
 		8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */; };
 		8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132004D2C7FB1C7006CAD53 /* MatchService.swift */; };
 		813200522C7FBF09006CAD53 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200512C7FBF09006CAD53 /* NetworkManager.swift */; };
+		813200542C7FF6BB006CAD53 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200532C7FF6BB006CAD53 /* League.swift */; };
+		813200562C80C2E1006CAD53 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200552C80C2E1006CAD53 /* Serie.swift */; };
+		813200582C80C4AA006CAD53 /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200572C80C4AA006CAD53 /* Opponent.swift */; };
+		8132005A2C80E748006CAD53 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200592C80E748006CAD53 /* Status.swift */; };
+		8132005D2C80EC8F006CAD53 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132005C2C80EC8E006CAD53 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,11 @@
 		8132004A2C7FAD02006CAD53 /* MatchesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListViewModel.swift; sourceTree = "<group>"; };
 		8132004D2C7FB1C7006CAD53 /* MatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
 		813200512C7FBF09006CAD53 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		813200532C7FF6BB006CAD53 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
+		813200552C80C2E1006CAD53 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
+		813200572C80C4AA006CAD53 /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
+		813200592C80E748006CAD53 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		8132005C2C80EC8E006CAD53 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,7 @@
 				813200472C7FAC28006CAD53 /* Model */,
 				8132004C2C7FB0C8006CAD53 /* Service */,
 				813200432C7FAADE006CAD53 /* Resources */,
+				8132005B2C80EC6E006CAD53 /* Extensions */,
 			);
 			path = CSTV;
 			sourceTree = "<group>";
@@ -136,6 +147,10 @@
 			isa = PBXGroup;
 			children = (
 				813200482C7FAC3A006CAD53 /* Match.swift */,
+				813200532C7FF6BB006CAD53 /* League.swift */,
+				813200552C80C2E1006CAD53 /* Serie.swift */,
+				813200572C80C4AA006CAD53 /* Opponent.swift */,
+				813200592C80E748006CAD53 /* Status.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,6 +162,14 @@
 				813200512C7FBF09006CAD53 /* NetworkManager.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		8132005B2C80EC6E006CAD53 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8132005C2C80EC8E006CAD53 /* Date+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,11 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813200542C7FF6BB006CAD53 /* League.swift in Sources */,
+				8132005D2C80EC8F006CAD53 /* Date+Extensions.swift in Sources */,
+				8132005A2C80E748006CAD53 /* Status.swift in Sources */,
 				813200522C7FBF09006CAD53 /* NetworkManager.swift in Sources */,
 				813200462C7FAB4E006CAD53 /* MatchesListView.swift in Sources */,
 				813200192C7FA522006CAD53 /* CSTVApp.swift in Sources */,
+				813200582C80C4AA006CAD53 /* Opponent.swift in Sources */,
 				8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */,
 				8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */,
+				813200562C80C2E1006CAD53 /* Serie.swift in Sources */,
 				813200492C7FAC3A006CAD53 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

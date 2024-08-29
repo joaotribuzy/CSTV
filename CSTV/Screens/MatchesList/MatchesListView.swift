@@ -18,7 +18,10 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     
     var body: some View {
         List($viewModel.matches) { match in
-            Text("\(match.id)")
+            VStack(alignment: .leading) {
+                Text(match.name.wrappedValue)
+                Text(match.league.name.wrappedValue)
+            }
         }
         .task {
             await viewModel.requestMatches()

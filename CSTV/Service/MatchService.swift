@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MatchServicing {
-    func fetchMatches() async throws -> [Match]
+    func fetchMatches(for date: String) async throws -> [Match]
 }
 
 final class MatchService: MatchServicing {
@@ -21,17 +21,18 @@ final class MatchService: MatchServicing {
         self.networkManager = networkManager
     }
     
-    func fetchMatches() async throws -> [Match] {
+    func fetchMatches(for dateRange: String) async throws -> [Match] {
         
         guard let url = URL(string: baseUrlString) else { throw URLError(.badURL) }
         
         let queryItems: [URLQueryItem] = [
+            URLQueryItem(name: RequestComponents.beginAtRange.rawValue, value: dateRange),
             URLQueryItem(name: RequestComponents.token.rawValue, value: apiKey),
         ]
         
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else { throw URLError(.badURL) }
         
-        components.queryItems = components.queryItems.map { $0 + queryItems } ?? queryItems
+        components.queryItems = queryItems
         
         return try await networkManager.get(url: components.url, type: [Match].self)
     }
@@ -42,5 +43,6 @@ private extension MatchService {
     enum RequestComponents: String {
         case matchesBaseUrl = "https://api.pandascore.co/csgo/matches"
         case token
+        case beginAtRange = "range[begin_at]"
     }
 }
