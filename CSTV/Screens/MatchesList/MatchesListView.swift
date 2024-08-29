@@ -18,7 +18,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     
     var body: some View {
         List($viewModel.matches) { match in
-            Text(match.title.wrappedValue+"\(match.id)")
+            Text("\(match.id)")
         }
         .task {
             await viewModel.requestMatches()

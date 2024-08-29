@@ -9,5 +9,4 @@ import Foundation
 
 struct Match: Identifiable, Decodable {
     var id: Int
-    var title: String
 }
