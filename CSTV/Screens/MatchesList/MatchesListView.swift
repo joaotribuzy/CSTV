@@ -10,6 +10,8 @@ import SwiftUI
 protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
     func requestMatches() async
+    func requestLeagueSerieDescription(for match: Match) -> String
+    func requestLeagueURL(for match: Match) -> URL?
 }
 
 struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
@@ -21,7 +23,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
             ScrollView {
                 VStack(spacing: Layout.contentVerticalSpacing) {
                     ForEach($viewModel.matches) { match in
-                        matchCell()
+                        matchCell(match: match)
                     }
                 }
                 .padding(.horizontal, Layout.contentHorizontalPadding)
@@ -35,7 +37,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         }
     }
     
-    func matchCell() -> some View {
+    func matchCell(match: Binding<Match>) -> some View {
         VStack(spacing: .zero) {
             HStack {
                 Spacer()
@@ -47,18 +49,28 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
                 .background(.white)
                 .opacity(Style.cellDividerOpacity)
                 .padding(.top, Layout.cellElementsSpacing)
-            leagueDescription()
+            leagueDescription(match)
         }
         .background(Colors.secondaryBackground)
         .clipShape(RoundedRectangle(cornerRadius: Layout.cellCornerRadius))
     }
     
-    func leagueDescription() -> some View {
-        HStack(alignment: .center) {
-            Circle()
-                .frame(width: Layout.leagueLogoDimension)
-            Text("League + serie")
-                .font(Fonts.leagueDescription)
+    func leagueDescription(_ match: Binding<Match>) -> some View {
+        HStack(spacing: Layout.leagueHStackSpacing) {
+            if let url = viewModel.requestLeagueURL(for: match.wrappedValue) {
+                AsyncImage(url: url) { phase in
+                    if case .success(let image) = phase {
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    }
+                }
+                .frame(height: Layout.leagueLogoDimension)
+            }
+            Text(
+                viewModel.requestLeagueSerieDescription(for: match.wrappedValue)
+            )
+            .font(Fonts.leagueDescription)
             Spacer()
         }
         .padding(.vertical, Layout.leagueVerticalSpacing)
@@ -115,6 +127,7 @@ private extension MatchesListView {
         static var leagueHorizontalSpacing: CGFloat { 15 }
         static var timeLabelHeight: CGFloat { 25 }
         static var timeLabelPadding: CGFloat { 8 }
+        static var leagueHStackSpacing: CGFloat { 8 }
     }
     
     enum Style {
