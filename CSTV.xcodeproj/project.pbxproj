@@ -21,6 +21,9 @@
 		813200582C80C4AA006CAD53 /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200572C80C4AA006CAD53 /* Opponent.swift */; };
 		8132005A2C80E748006CAD53 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200592C80E748006CAD53 /* Status.swift */; };
 		8132005D2C80EC8F006CAD53 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132005C2C80EC8E006CAD53 /* Date+Extensions.swift */; };
+		8132005F2C813645006CAD53 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132005E2C813645006CAD53 /* Colors.swift */; };
+		813200612C813668006CAD53 /* Colors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200602C813668006CAD53 /* Colors+Extensions.swift */; };
+		813200642C8141BB006CAD53 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200632C8141BB006CAD53 /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,10 @@
 		813200572C80C4AA006CAD53 /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
 		813200592C80E748006CAD53 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		8132005C2C80EC8E006CAD53 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		8132005E2C813645006CAD53 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		813200602C813668006CAD53 /* Colors+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extensions.swift"; sourceTree = "<group>"; };
+		813200622C813956006CAD53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		813200632C8141BB006CAD53 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +98,7 @@
 		813200172C7FA522006CAD53 /* CSTV */ = {
 			isa = PBXGroup;
 			children = (
+				813200622C813956006CAD53 /* Info.plist */,
 				813200182C7FA522006CAD53 /* CSTVApp.swift */,
 				813200422C7FA9EC006CAD53 /* Screens */,
 				813200472C7FAC28006CAD53 /* Model */,
@@ -130,6 +138,8 @@
 			children = (
 				8132001C2C7FA523006CAD53 /* Assets.xcassets */,
 				8132001E2C7FA523006CAD53 /* Preview Content */,
+				8132005E2C813645006CAD53 /* Colors.swift */,
+				813200632C8141BB006CAD53 /* Fonts.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -168,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				8132005C2C80EC8E006CAD53 /* Date+Extensions.swift */,
+				813200602C813668006CAD53 /* Colors+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,7 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813200642C8141BB006CAD53 /* Fonts.swift in Sources */,
 				813200542C7FF6BB006CAD53 /* League.swift in Sources */,
+				8132005F2C813645006CAD53 /* Colors.swift in Sources */,
 				8132005D2C80EC8F006CAD53 /* Date+Extensions.swift in Sources */,
 				8132005A2C80E748006CAD53 /* Status.swift in Sources */,
 				813200522C7FBF09006CAD53 /* NetworkManager.swift in Sources */,
@@ -281,6 +294,7 @@
 				813200582C80C4AA006CAD53 /* Opponent.swift in Sources */,
 				8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */,
 				8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */,
+				813200612C813668006CAD53 /* Colors+Extensions.swift in Sources */,
 				813200562C80C2E1006CAD53 /* Serie.swift in Sources */,
 				813200492C7FAC3A006CAD53 /* Match.swift in Sources */,
 			);
@@ -435,11 +449,12 @@
 				DEVELOPMENT_TEAM = S67GUZ7P6T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CSTV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -464,11 +479,12 @@
 				DEVELOPMENT_TEAM = S67GUZ7P6T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CSTV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
