@@ -43,7 +43,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
                 Spacer()
                 timeLabel()
             }
-            versusFlags()
+            versusFlags(opponents: match.opponents)
             Divider()
                 .frame(height: Layout.dividerHeight)
                 .background(.white)
@@ -53,6 +53,60 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         }
         .background(Colors.secondaryBackground)
         .clipShape(RoundedRectangle(cornerRadius: Layout.cellCornerRadius))
+    }
+    
+    func timeLabel() -> some View {
+        ZStack {
+            BottomLeftRoundedRectangle(cornerRadius: Layout.cellCornerRadius)
+                .fill(Color.red)
+            
+            Text("AGORA")
+                .font(Fonts.timeLabel)
+                .padding(Layout.timeLabelPadding)
+        }
+        .fixedSize(horizontal: true, vertical: true)
+        .frame(height: Layout.timeLabelHeight)
+    }
+    
+    func versusFlags(opponents: Binding<[Opponent]>) -> some View {
+        HStack(spacing: Layout.versusInnerSpacing) {
+            switch opponents.count {
+            case 1:
+                teamFlag(opponent: opponents[0])
+            case 2:
+                teamFlag(opponent: opponents[0])
+                Text(Content.vs)
+                    .font(Fonts.versusTitle)
+                    .opacity(Style.versusOpacity)
+                teamFlag(opponent: opponents[1])
+            default:
+                Spacer()
+            }
+        }
+        .padding(.top, Layout.cellElementsSpacing)
+    }
+    
+    func teamFlag(opponent: Binding<Opponent>) -> some View {
+        VStack(spacing: Layout.teamFlagInnerSpacing) {
+            AsyncImage(url: opponent.wrappedValue.imageUrl) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                case .failure:
+                    Circle()
+                @unknown default:
+                    Circle()
+                }
+            }
+            .frame(height: Layout.opponentElementHeight)
+            .foregroundStyle(Colors.placeholderImage)
+            Text(opponent.wrappedValue.name)
+                .font(Fonts.teamFlagTitle)
+        }
     }
     
     func leagueDescription(_ match: Binding<Match>) -> some View {
@@ -77,39 +131,6 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         .padding(.horizontal, Layout.leagueHorizontalSpacing)
     }
     
-    func versusFlags() -> some View {
-        HStack(spacing: Layout.versusInnerSpacing) {
-            teamFlag()
-            Text(Content.vs)
-                .font(Fonts.versusTitle)
-                .opacity(Style.versusOpacity)
-            teamFlag()
-        }
-        .padding(.top, Layout.cellElementsSpacing)
-    }
-    
-    func timeLabel() -> some View {
-        ZStack {
-            BottomLeftRoundedRectangle(cornerRadius: Layout.cellCornerRadius)
-                .fill(Color.red)
-            
-            Text("AGORA")
-                .font(Fonts.timeLabel)
-                .padding(Layout.timeLabelPadding)
-        }
-        .fixedSize(horizontal: true, vertical: true)
-        .frame(height: Layout.timeLabelHeight)
-    }
-    
-    func teamFlag() -> some View {
-        VStack(spacing: Layout.teamFlagInnerSpacing) {
-            Circle()
-                .frame(width: Layout.opponentImageDimension)
-                .foregroundStyle(Colors.placeholderImage)
-            Text("Team")
-                .font(Fonts.teamFlagTitle)
-        }
-    }
 }
 
 private extension MatchesListView {
@@ -117,7 +138,7 @@ private extension MatchesListView {
         static var cellCornerRadius: CGFloat { 16 }
         static var contentHorizontalPadding: CGFloat { 24 }
         static var contentVerticalSpacing: CGFloat { 24 }
-        static var opponentImageDimension: CGFloat { 60 }
+        static var opponentElementHeight: CGFloat { 60 }
         static var teamFlagInnerSpacing: CGFloat { 10 }
         static var cellElementsSpacing: CGFloat { 18.5 }
         static var versusInnerSpacing: CGFloat { 20 }
