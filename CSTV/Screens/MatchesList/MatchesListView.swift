@@ -77,7 +77,16 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     }
     
     func timeLabel() -> some View {
-        Text("Live") // TODO: Time/Live label
+        ZStack {
+            BottomLeftRoundedRectangle(cornerRadius: Layout.cellCornerRadius)
+                .fill(Color.red)
+            
+            Text("AGORA")
+                .font(Fonts.timeLabel)
+                .padding(Layout.timeLabelPadding)
+        }
+        .fixedSize(horizontal: true, vertical: true)
+        .frame(height: Layout.timeLabelHeight)
     }
     
     func teamFlag() -> some View {
@@ -104,6 +113,8 @@ private extension MatchesListView {
         static var dividerHeight: CGFloat { 1 }
         static var leagueVerticalSpacing: CGFloat { 8 }
         static var leagueHorizontalSpacing: CGFloat { 15 }
+        static var timeLabelHeight: CGFloat { 25 }
+        static var timeLabelPadding: CGFloat { 8 }
     }
     
     enum Style {

@@ -19,7 +19,7 @@ extension Date {
     
     static func getTodayDateRangeString() -> String {
         
-        var today = Calendar.current.startOfDay(for: Date())
+        let today = Calendar.current.startOfDay(for: Date())
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
