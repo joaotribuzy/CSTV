@@ -11,7 +11,6 @@ protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
     func requestMatches() async
     func requestLeagueSerieDescription(for match: Match) -> String
-    func requestLeagueURL(for match: Match) -> URL?
 }
 
 struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
@@ -118,7 +117,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     
     func leagueDescription(_ match: Binding<Match>) -> some View {
         HStack(spacing: Layout.leagueHStackSpacing) {
-            if let url = viewModel.requestLeagueURL(for: match.wrappedValue) {
+            if let url = match.wrappedValue.league.imageUrl {
                 AsyncImage(url: url) { phase in
                     if case .success(let image) = phase {
                         image

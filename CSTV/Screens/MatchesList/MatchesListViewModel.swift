@@ -31,10 +31,4 @@ final class MatchesListViewModel<Service: MatchServicing>: MatchesListDataSource
         match.league.name + (match.serie.name.isEmpty ? "" : " + \(match.serie.name)")
     }
     
-    func requestLeagueURL(for match: Match) -> URL? {
-        guard let leagueLogoStringUrl = match.league.imageUrl else { return nil }
-        
-        return URL(string: leagueLogoStringUrl)
-    }
-    
 }
