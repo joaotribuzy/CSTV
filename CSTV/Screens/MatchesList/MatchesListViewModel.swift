@@ -27,8 +27,4 @@ final class MatchesListViewModel<Service: MatchServicing>: MatchesListDataSource
         }
     }
     
-    func requestLeagueSerieDescription(for match: Match) -> String {
-        match.league.name + (match.serie.name.isEmpty ? "" : " + \(match.serie.name)")
-    }
-    
 }

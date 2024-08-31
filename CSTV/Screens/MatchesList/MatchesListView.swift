@@ -10,7 +10,6 @@ import SwiftUI
 protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
     func requestMatches() async
-    func requestLeagueSerieDescription(for match: Match) -> String
 }
 
 struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
@@ -127,9 +126,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
                 }
                 .frame(height: Layout.leagueLogoDimension)
             }
-            Text(
-                viewModel.requestLeagueSerieDescription(for: match.wrappedValue)
-            )
+            Text(match.wrappedValue.leagueSerieDescription)
             .font(Fonts.leagueDescription)
             Spacer()
         }

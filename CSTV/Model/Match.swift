@@ -14,6 +14,7 @@ struct Match: Identifiable, Decodable {
     var status: Status
     var serie: Serie
     var opponents: [Opponent]
+    var leagueSerieDescription: String
     
     enum CodingKeys: String, CodingKey {
         case id, name, league, status, serie, opponents
@@ -30,5 +31,7 @@ struct Match: Identifiable, Decodable {
         self.opponents = try container.decode([OpponentWrapper].self, forKey: .opponents).map({ opponentWrapper in
             return opponentWrapper.opponent
         })
+        self.leagueSerieDescription = self.league.name + (self.serie.name.isEmpty ? "" : " + \(self.serie.name)")
+
     }
 }
