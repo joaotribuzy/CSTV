@@ -31,6 +31,7 @@ final class MatchesListViewModel<Service: MatchServicing>: MatchesListDataSource
     func requestUpcomingMatches() async {
         do {
             let upcomingMatches = try await matchService.fetchUpcomingMatches()
+                .filter { $0.opponents.count >= 2}
 
             DispatchQueue.main.async {
                 self.matches = self.matches + upcomingMatches
