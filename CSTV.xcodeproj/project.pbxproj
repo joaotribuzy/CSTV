@@ -30,6 +30,8 @@
 		8132006E2C820E72006CAD53 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8132006D2C820E72006CAD53 /* Roboto-Bold.ttf */; };
 		813200702C83682C006CAD53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132006F2C83682C006CAD53 /* String+Extensions.swift */; };
 		813200742C838055006CAD53 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200732C838055006CAD53 /* URL+Extensions.swift */; };
+		813200772C83D7C4006CAD53 /* MatchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200762C83D7C4006CAD53 /* MatchDetailView.swift */; };
+		813200792C83D963006CAD53 /* MatchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200782C83D963006CAD53 /* MatchDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		8132006D2C820E72006CAD53 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		8132006F2C83682C006CAD53 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		813200732C838055006CAD53 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		813200762C83D7C4006CAD53 /* MatchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailView.swift; sourceTree = "<group>"; };
+		813200782C83D963006CAD53 /* MatchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				813200442C7FAB39006CAD53 /* MatchesList */,
+				813200752C83D792006CAD53 /* MatchDetail */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -215,6 +220,15 @@
 				8132006D2C820E72006CAD53 /* Roboto-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		813200752C83D792006CAD53 /* MatchDetail */ = {
+			isa = PBXGroup;
+			children = (
+				813200762C83D7C4006CAD53 /* MatchDetailView.swift */,
+				813200782C83D963006CAD53 /* MatchDetailViewModel.swift */,
+			);
+			path = MatchDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,10 +335,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				813200742C838055006CAD53 /* URL+Extensions.swift in Sources */,
+				813200772C83D7C4006CAD53 /* MatchDetailView.swift in Sources */,
 				813200672C815B00006CAD53 /* BottomLeftRoundedRectangle.swift in Sources */,
 				813200642C8141BB006CAD53 /* Fonts.swift in Sources */,
 				813200542C7FF6BB006CAD53 /* League.swift in Sources */,
 				8132005F2C813645006CAD53 /* Colors.swift in Sources */,
+				813200792C83D963006CAD53 /* MatchDetailViewModel.swift in Sources */,
 				813200702C83682C006CAD53 /* String+Extensions.swift in Sources */,
 				8132005D2C80EC8F006CAD53 /* Date+Extensions.swift in Sources */,
 				8132005A2C80E748006CAD53 /* Status.swift in Sources */,

@@ -22,7 +22,9 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
             ScrollView {
                 VStack(spacing: Layout.contentVerticalSpacing) {
                     ForEach($viewModel.matches) { match in
-                        matchCell(match: match)
+                        NavigationLink(destination: MatchDetailView(viewModel: MatchDetailViewModel(match: match.wrappedValue))) {
+                            matchCell(match: match)
+                        }
                     }
                 }
                 .padding(.horizontal, Layout.contentHorizontalPadding)
@@ -37,6 +39,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
             .toolbarBackground(Colors.primaryBackground, for: .navigationBar)
             .background(Colors.primaryBackground)
         }
+        .accentColor(.primary)
     }
     
     func matchCell(match: Binding<Match>) -> some View {
