@@ -9,7 +9,8 @@ import SwiftUI
 
 protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
-    func requestMatches() async
+    func requestRunningMatches() async
+    func requestUpcomingMatches() async
 }
 
 struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
@@ -25,8 +26,11 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
                     }
                 }
                 .padding(.horizontal, Layout.contentHorizontalPadding)
+                .task(priority: .high) {
+                    await viewModel.requestRunningMatches()
+                }
                 .task {
-                    await viewModel.requestMatches()
+                    await viewModel.requestUpcomingMatches()
                 }
             }
             .navigationTitle("Partidas")
@@ -89,7 +93,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     func teamFlag(opponent: Binding<Opponent>) -> some View {
         VStack(spacing: Layout.teamFlagInnerSpacing) {
             Group {
-                if let url = opponent.wrappedValue.imageUrl {
+                if let url = opponent.wrappedValue.imageUrl?.getThumbUrl() {
                     AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { phase in
                         switch phase {
                         case .empty:

@@ -56,6 +56,7 @@ private extension MatchService {
         
         let queryItems: [URLQueryItem] = [
             URLQueryItem(name: RequestComponents.token.rawValue, value: apiKey),
+            URLQueryItem(name: "sort", value: "begin_at")
         ]
         
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else { throw URLError(.badURL) }

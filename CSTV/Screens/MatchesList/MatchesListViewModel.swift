@@ -16,15 +16,24 @@ final class MatchesListViewModel<Service: MatchServicing>: MatchesListDataSource
         self.matchService = matchService
     }
     
-    func requestMatches() async {
+    func requestRunningMatches() async {
         do {
             let runningMatches = try await matchService.fetchRunningMatches()
-                .sorted { $0.beginAt < $1.beginAt }
+
+            DispatchQueue.main.async {
+                self.matches = self.matches + runningMatches
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func requestUpcomingMatches() async {
+        do {
             let upcomingMatches = try await matchService.fetchUpcomingMatches()
-                .filter { !$0.status.isCanceled() }
-                .sorted { $0.beginAt < $1.beginAt }
-            await MainActor.run {
-                matches = runningMatches + upcomingMatches
+
+            DispatchQueue.main.async {
+                self.matches = self.matches + upcomingMatches
             }
         } catch {
             print(error)

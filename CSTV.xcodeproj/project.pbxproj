@@ -29,6 +29,7 @@
 		8132006C2C820DEE006CAD53 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8132006B2C820DEE006CAD53 /* Roboto-Medium.ttf */; };
 		8132006E2C820E72006CAD53 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8132006D2C820E72006CAD53 /* Roboto-Bold.ttf */; };
 		813200702C83682C006CAD53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132006F2C83682C006CAD53 /* String+Extensions.swift */; };
+		813200742C838055006CAD53 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200732C838055006CAD53 /* URL+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		8132006B2C820DEE006CAD53 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8132006D2C820E72006CAD53 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		8132006F2C83682C006CAD53 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		813200732C838055006CAD53 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				8132005C2C80EC8E006CAD53 /* Date+Extensions.swift */,
 				813200602C813668006CAD53 /* Colors+Extensions.swift */,
 				8132006F2C83682C006CAD53 /* String+Extensions.swift */,
+				813200732C838055006CAD53 /* URL+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813200742C838055006CAD53 /* URL+Extensions.swift in Sources */,
 				813200672C815B00006CAD53 /* BottomLeftRoundedRectangle.swift in Sources */,
 				813200642C8141BB006CAD53 /* Fonts.swift in Sources */,
 				813200542C7FF6BB006CAD53 /* League.swift in Sources */,
