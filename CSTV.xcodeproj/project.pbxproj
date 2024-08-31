@@ -28,6 +28,7 @@
 		8132006A2C820DDF006CAD53 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 813200692C820DDF006CAD53 /* Roboto-Regular.ttf */; };
 		8132006C2C820DEE006CAD53 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8132006B2C820DEE006CAD53 /* Roboto-Medium.ttf */; };
 		8132006E2C820E72006CAD53 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8132006D2C820E72006CAD53 /* Roboto-Bold.ttf */; };
+		813200702C83682C006CAD53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132006F2C83682C006CAD53 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		813200692C820DDF006CAD53 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8132006B2C820DEE006CAD53 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8132006D2C820E72006CAD53 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		8132006F2C83682C006CAD53 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			children = (
 				8132005C2C80EC8E006CAD53 /* Date+Extensions.swift */,
 				813200602C813668006CAD53 /* Colors+Extensions.swift */,
+				8132006F2C83682C006CAD53 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				813200642C8141BB006CAD53 /* Fonts.swift in Sources */,
 				813200542C7FF6BB006CAD53 /* League.swift in Sources */,
 				8132005F2C813645006CAD53 /* Colors.swift in Sources */,
+				813200702C83682C006CAD53 /* String+Extensions.swift in Sources */,
 				8132005D2C80EC8F006CAD53 /* Date+Extensions.swift in Sources */,
 				8132005A2C80E748006CAD53 /* Status.swift in Sources */,
 				813200522C7FBF09006CAD53 /* NetworkManager.swift in Sources */,

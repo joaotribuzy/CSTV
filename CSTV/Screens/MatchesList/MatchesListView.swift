@@ -39,7 +39,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         VStack(spacing: .zero) {
             HStack {
                 Spacer()
-                timeLabel()
+                timeLabel(match.wrappedValue)
             }
             versusFlags(opponents: match.opponents)
             Divider()
@@ -53,12 +53,14 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         .clipShape(RoundedRectangle(cornerRadius: Layout.cellCornerRadius))
     }
     
-    func timeLabel() -> some View {
+    func timeLabel(_ match: Match) -> some View {
         ZStack {
             BottomLeftRoundedRectangle(cornerRadius: Layout.cellCornerRadius)
-                .fill(Color.red)
-            
-            Text("AGORA")
+                .fill(match.isRunning() ? Colors.matchRunning : Colors.upcomingMatch)
+                .opacity(
+                    match.isRunning() ? Style.runningMatchTimeLabel : Style.upcomingMatchTimeLabel
+                )
+            Text(match.timeDescription)
                 .font(Fonts.timeLabel)
                 .padding(Layout.timeLabelPadding)
         }
@@ -127,7 +129,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
                 .frame(height: Layout.leagueLogoDimension)
             }
             Text(match.wrappedValue.leagueSerieDescription)
-            .font(Fonts.leagueDescription)
+                .font(Fonts.leagueDescription)
             Spacer()
         }
         .padding(.vertical, Layout.leagueVerticalSpacing)
@@ -157,6 +159,8 @@ private extension MatchesListView {
     enum Style {
         static var versusOpacity: CGFloat { 0.5 }
         static var cellDividerOpacity: CGFloat { 0.2 }
+        static var runningMatchTimeLabel: CGFloat { 1 }
+        static var upcomingMatchTimeLabel: CGFloat { 0.2 }
     }
     
     enum Content {

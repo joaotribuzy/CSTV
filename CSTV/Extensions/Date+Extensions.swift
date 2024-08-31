@@ -8,25 +8,33 @@
 import Foundation
 
 extension Date {
-    private func addDay() -> Date {
-        var dateComponent = DateComponents()
-        dateComponent.day = 1
 
+    func getDateDescription(from matchStatus: Status) -> String {
+        if matchStatus == .running {
+            return "AGORA"
+        }
+        
         let calendar = Calendar.current
-        guard let newDate = calendar.date(byAdding: dateComponent, to: self) else { return Date() }
-        return newDate
+        
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        
+        let timeString = formatter.string(from: self)
+        
+        if calendar.isDate(self, inSameDayAs: .now) {
+            return "Hoje, \(timeString)"
+        }
+        
+        if let preferredLanguage = Locale.preferredLanguages.first {
+            formatter.locale = Locale(identifier: preferredLanguage)
+        } else {
+            formatter.locale = Locale.current
+        }
+        
+        formatter.dateFormat = "EEE"
+        let dayString = formatter.string(from: self).replacingOccurrences(of: ".", with: "").capitalizedFirstLetter()
+        
+        return "\(dayString), \(timeString)"
     }
-    
-    static func getTodayDateRangeString() -> String {
-        
-        let today = Calendar.current.startOfDay(for: Date())
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        dateFormatter.timeZone = TimeZone.init(abbreviation: "UTC")
-        
-        
-        return "\(dateFormatter.string(from: today)),\(dateFormatter.string(from: today.addDay()))"
-        
-    }
+
 }

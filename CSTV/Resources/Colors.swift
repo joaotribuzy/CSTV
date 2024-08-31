@@ -18,4 +18,8 @@ enum Colors {
     
     // MARK: - Placeholder
     static let placeholderImage = Color(hex: "#C4C4C4")
+    
+    // MARK: - TimeLabel
+    static let matchRunning = Color(hex: "#F42A35")
+    static let upcomingMatch = Color(hex: "#FAFAFA")
 }
