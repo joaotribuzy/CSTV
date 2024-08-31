@@ -88,21 +88,28 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     
     func teamFlag(opponent: Binding<Opponent>) -> some View {
         VStack(spacing: Layout.teamFlagInnerSpacing) {
-            AsyncImage(url: opponent.wrappedValue.imageUrl) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFit()
-                case .failure:
-                    Circle()
-                @unknown default:
+            Group {
+                if let url = opponent.wrappedValue.imageUrl {
+                    AsyncImage(url: url) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        default:
+                            Circle()
+                        }
+                    }
+                } else {
                     Circle()
                 }
             }
-            .frame(height: Layout.opponentElementHeight)
+            .frame(
+                width: Layout.opponentElementDimension,
+                height: Layout.opponentElementDimension
+            )
             .foregroundStyle(Colors.placeholderImage)
             Text(opponent.wrappedValue.name)
                 .font(Fonts.teamFlagTitle)
@@ -138,7 +145,7 @@ private extension MatchesListView {
         static var cellCornerRadius: CGFloat { 16 }
         static var contentHorizontalPadding: CGFloat { 24 }
         static var contentVerticalSpacing: CGFloat { 24 }
-        static var opponentElementHeight: CGFloat { 60 }
+        static var opponentElementDimension: CGFloat { 60 }
         static var teamFlagInnerSpacing: CGFloat { 10 }
         static var cellElementsSpacing: CGFloat { 18.5 }
         static var versusInnerSpacing: CGFloat { 20 }
