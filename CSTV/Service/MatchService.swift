@@ -8,7 +8,8 @@
 import Foundation
 
 protocol MatchServicing {
-    func fetchMatches(for date: String) async throws -> [Match]
+    func fetchRunningMatches() async throws -> [Match]
+    func fetchUpcomingMatches() async throws -> [Match]
 }
 
 final class MatchService: MatchServicing {
@@ -21,12 +22,39 @@ final class MatchService: MatchServicing {
         self.networkManager = networkManager
     }
     
-    func fetchMatches(for dateRange: String) async throws -> [Match] {
+    func fetchRunningMatches() async throws -> [Match] {
+        
+        var components = try getBaseRequestComponents()
+        components.path.append(RequestComponents.running.rawValue)
+        
+        return try await networkManager.get(url: components.url, type: [Match].self)
+        
+    }
+    
+    func fetchUpcomingMatches() async throws -> [Match] {
+        
+        var components = try getBaseRequestComponents()
+        components.path.append(RequestComponents.upcoming.rawValue)
+        
+        return try await networkManager.get(url: components.url, type: [Match].self)
+        
+    }
+
+}
+
+private extension MatchService {
+    enum RequestComponents: String {
+        case matchesBaseUrl = "https://api.pandascore.co/csgo/matches/"
+        case running
+        case upcoming
+        case token
+    }
+    
+    func getBaseRequestComponents() throws -> URLComponents {
         
         guard let url = URL(string: baseUrlString) else { throw URLError(.badURL) }
         
         let queryItems: [URLQueryItem] = [
-            URLQueryItem(name: RequestComponents.beginAtRange.rawValue, value: dateRange),
             URLQueryItem(name: RequestComponents.token.rawValue, value: apiKey),
         ]
         
@@ -34,15 +62,7 @@ final class MatchService: MatchServicing {
         
         components.queryItems = queryItems
         
-        return try await networkManager.get(url: components.url, type: [Match].self)
-    }
-    
-}
-
-private extension MatchService {
-    enum RequestComponents: String {
-        case matchesBaseUrl = "https://api.pandascore.co/csgo/matches"
-        case token
-        case beginAtRange = "range[begin_at]"
+        return components
+        
     }
 }

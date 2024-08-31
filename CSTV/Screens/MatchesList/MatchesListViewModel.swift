@@ -18,9 +18,13 @@ final class MatchesListViewModel<Service: MatchServicing>: MatchesListDataSource
     
     func requestMatches() async {
         do {
-            let fetchedMatches = try await matchService.fetchMatches(for: Date.getTodayDateRangeString())
+            let runningMatches = try await matchService.fetchRunningMatches()
+                .sorted { $0.beginAt < $1.beginAt }
+            let upcomingMatches = try await matchService.fetchUpcomingMatches()
+                .filter { !$0.status.isCanceled() }
+                .sorted { $0.beginAt < $1.beginAt }
             await MainActor.run {
-                matches = fetchedMatches
+                matches = runningMatches + upcomingMatches
             }
         } catch {
             print(error)

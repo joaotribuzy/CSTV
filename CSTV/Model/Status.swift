@@ -10,4 +10,6 @@ import Foundation
 enum Status: String, Decodable {
     case running, finished, canceled
     case notStarted = "not_started"
+    
+    func isCanceled() -> Bool { self == .canceled }
 }
