@@ -88,7 +88,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         VStack(spacing: Layout.teamFlagInnerSpacing) {
             Group {
                 if let url = opponent.wrappedValue.imageUrl {
-                    AsyncImage(url: url) { phase in
+                    AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { phase in
                         switch phase {
                         case .empty:
                             ProgressView()
@@ -117,7 +117,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     func leagueDescription(_ match: Binding<Match>) -> some View {
         HStack(spacing: Layout.leagueHStackSpacing) {
             if let url = match.wrappedValue.league.imageUrl {
-                AsyncImage(url: url) { phase in
+                AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { phase in
                     if case .success(let image) = phase {
                         image
                             .resizable()
