@@ -22,7 +22,12 @@ struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
             ScrollView {
                 VStack {
                     VersusFlags(opponents: viewModel.match.opponents)
-                        .padding(.top, Layout.versusFlagTopSpacing)
+                        .padding(.top, Layout.innerVerticalSpacing)
+                    
+                    Text(viewModel.match.timeDescription)
+                        .font(Fonts.detailViewTime)
+                        .padding(.top, Layout.innerVerticalSpacing)
+                    
                     HStack(spacing: Layout.playerGridSpacing) {
                         VStack(spacing: Layout.playerGridSpacing) {
                             PlayerLeadingFlag()
@@ -39,6 +44,7 @@ struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
                             PlayerTrailingFlag()
                         }
                     }
+                    .padding(.top, Layout.innerVerticalSpacing)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -80,7 +86,7 @@ private extension MatchDetailView {
         static var backButtonDimension: CGFloat { 24 }
         static var backButtonLeadingPadding: CGFloat { 24 }
         static var navigationTitleHorizontalPadding: CGFloat { 48 }
-        static var versusFlagTopSpacing: CGFloat { 24 }
+        static var innerVerticalSpacing: CGFloat { 24 }
         static var playerGridSpacing: CGFloat { 12 }
     }
 }
