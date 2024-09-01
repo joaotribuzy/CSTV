@@ -15,6 +15,7 @@ enum Colors {
     
     // MARK: - Font
     static let primaryFont = Color.white
+    static let secondaryFont = Color(hex: "#6C6B7E")
     
     // MARK: - Placeholder
     static let placeholderImage = Color(hex: "#C4C4C4")
