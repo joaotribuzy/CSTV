@@ -20,7 +20,10 @@ struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
         VStack(spacing: .zero) {
             customNavigationBar
             ScrollView {
-                Text(viewModel.match.name)
+                VStack {
+                    VersusFlags(opponents: viewModel.match.opponents)
+                        .padding(.top, Layout.versusFlagTopSpacing)
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .toolbar(.hidden)
@@ -61,5 +64,6 @@ private extension MatchDetailView {
         static var backButtonDimension: CGFloat { 24 }
         static var backButtonLeadingPadding: CGFloat { 24 }
         static var navigationTitleHorizontalPadding: CGFloat { 48 }
+        static var versusFlagTopSpacing: CGFloat { 24 }
     }
 }
