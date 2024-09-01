@@ -36,6 +36,7 @@
 		8132007D2C83F1D5006CAD53 /* VersusFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132007C2C83F1D5006CAD53 /* VersusFlags.swift */; };
 		8132007F2C83F23E006CAD53 /* OpponentFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132007E2C83F23E006CAD53 /* OpponentFlag.swift */; };
 		813200812C83F7A8006CAD53 /* PlayerLeadingFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200802C83F7A8006CAD53 /* PlayerLeadingFlag.swift */; };
+		813200832C83FD40006CAD53 /* PlayerTrailingFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200822C83FD40006CAD53 /* PlayerTrailingFlag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		8132007C2C83F1D5006CAD53 /* VersusFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusFlags.swift; sourceTree = "<group>"; };
 		8132007E2C83F23E006CAD53 /* OpponentFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentFlag.swift; sourceTree = "<group>"; };
 		813200802C83F7A8006CAD53 /* PlayerLeadingFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLeadingFlag.swift; sourceTree = "<group>"; };
+		813200822C83FD40006CAD53 /* PlayerTrailingFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTrailingFlag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				8132007C2C83F1D5006CAD53 /* VersusFlags.swift */,
 				8132007E2C83F23E006CAD53 /* OpponentFlag.swift */,
 				813200802C83F7A8006CAD53 /* PlayerLeadingFlag.swift */,
+				813200822C83FD40006CAD53 /* PlayerTrailingFlag.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				8132005A2C80E748006CAD53 /* Status.swift in Sources */,
 				813200522C7FBF09006CAD53 /* NetworkManager.swift in Sources */,
 				813200462C7FAB4E006CAD53 /* MatchesListView.swift in Sources */,
+				813200832C83FD40006CAD53 /* PlayerTrailingFlag.swift in Sources */,
 				813200812C83F7A8006CAD53 /* PlayerLeadingFlag.swift in Sources */,
 				813200192C7FA522006CAD53 /* CSTVApp.swift in Sources */,
 				8132007D2C83F1D5006CAD53 /* VersusFlags.swift in Sources */,
