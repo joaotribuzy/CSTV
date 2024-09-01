@@ -13,4 +13,8 @@ final class MatchDetailViewModel: MatchDetailDataSourceable {
     init(match: Match) {
         self.match = match
     }
+    
+    func requestTeamData() async {
+        
+    }
 }

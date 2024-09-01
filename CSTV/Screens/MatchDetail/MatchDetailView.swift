@@ -9,6 +9,7 @@ import SwiftUI
 
 protocol MatchDetailDataSourceable: ObservableObject {
     var match: Match { get }
+    func requestTeamData() async
 }
 
 struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
