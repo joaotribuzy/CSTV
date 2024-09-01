@@ -48,7 +48,8 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
                 Spacer()
                 timeLabel(match.wrappedValue)
             }
-            versusFlags(opponents: match.opponents)
+            VersusFlags(opponents: match.opponents.wrappedValue)
+            .padding(.top, Layout.cellElementsSpacing)
             Divider()
                 .frame(height: Layout.dividerHeight)
                 .background(.white)
@@ -73,54 +74,6 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         }
         .fixedSize(horizontal: true, vertical: true)
         .frame(height: Layout.timeLabelHeight)
-    }
-    
-    func versusFlags(opponents: Binding<[Opponent]>) -> some View {
-        HStack(spacing: Layout.versusInnerSpacing) {
-            switch opponents.count {
-            case 1:
-                teamFlag(opponent: opponents[0])
-            case 2:
-                teamFlag(opponent: opponents[0])
-                Text(Content.vs)
-                    .font(Fonts.versusTitle)
-                    .opacity(Style.versusOpacity)
-                teamFlag(opponent: opponents[1])
-            default:
-                Spacer()
-            }
-        }
-        .padding(.top, Layout.cellElementsSpacing)
-    }
-    
-    func teamFlag(opponent: Binding<Opponent>) -> some View {
-        VStack(spacing: Layout.teamFlagInnerSpacing) {
-            Group {
-                if let url = opponent.wrappedValue.imageUrl?.getThumbUrl() {
-                    AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView()
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .scaledToFit()
-                        default:
-                            Circle()
-                        }
-                    }
-                } else {
-                    Circle()
-                }
-            }
-            .frame(
-                width: Layout.opponentElementDimension,
-                height: Layout.opponentElementDimension
-            )
-            .foregroundStyle(Colors.placeholderImage)
-            Text(opponent.wrappedValue.name)
-                .font(Fonts.teamFlagTitle)
-        }
     }
     
     func leagueDescription(_ match: Binding<Match>) -> some View {
@@ -150,10 +103,7 @@ private extension MatchesListView {
         static var cellCornerRadius: CGFloat { 16 }
         static var contentHorizontalPadding: CGFloat { 24 }
         static var contentVerticalSpacing: CGFloat { 24 }
-        static var opponentElementDimension: CGFloat { 60 }
-        static var teamFlagInnerSpacing: CGFloat { 10 }
         static var cellElementsSpacing: CGFloat { 18.5 }
-        static var versusInnerSpacing: CGFloat { 20 }
         static var leagueLogoDimension: CGFloat { 16 }
         static var dividerHeight: CGFloat { 1 }
         static var leagueVerticalSpacing: CGFloat { 8 }
@@ -164,14 +114,9 @@ private extension MatchesListView {
     }
     
     enum Style {
-        static var versusOpacity: CGFloat { 0.5 }
         static var cellDividerOpacity: CGFloat { 0.2 }
         static var runningMatchTimeLabel: CGFloat { 1 }
         static var upcomingMatchTimeLabel: CGFloat { 0.2 }
-    }
-    
-    enum Content {
-        static var vs: String { "VS" }
     }
 }
 
