@@ -12,6 +12,7 @@ enum Fonts {
     static let versusTitle = customFont(size: 14)
     static let leagueDescription = customFont(size: 10)
     static let timeLabel = customFont(size: 10, weight: .bold)
+    static let detailViewTitle = customFont(size: 18, weight: .medium)
     
     private static func customFont(size: CGFloat, weight: Font.Weight? = nil) -> Font {
         switch weight {

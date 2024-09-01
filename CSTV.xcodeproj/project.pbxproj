@@ -32,6 +32,7 @@
 		813200742C838055006CAD53 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200732C838055006CAD53 /* URL+Extensions.swift */; };
 		813200772C83D7C4006CAD53 /* MatchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200762C83D7C4006CAD53 /* MatchDetailView.swift */; };
 		813200792C83D963006CAD53 /* MatchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200782C83D963006CAD53 /* MatchDetailViewModel.swift */; };
+		8132007B2C83EA87006CAD53 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132007A2C83EA87006CAD53 /* Images.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		813200732C838055006CAD53 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		813200762C83D7C4006CAD53 /* MatchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailView.swift; sourceTree = "<group>"; };
 		813200782C83D963006CAD53 /* MatchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailViewModel.swift; sourceTree = "<group>"; };
+		8132007A2C83EA87006CAD53 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				813200682C820C46006CAD53 /* Fonts */,
 				8132001C2C7FA523006CAD53 /* Assets.xcassets */,
 				8132001E2C7FA523006CAD53 /* Preview Content */,
+				8132007A2C83EA87006CAD53 /* Images.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */,
 				8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */,
 				813200612C813668006CAD53 /* Colors+Extensions.swift in Sources */,
+				8132007B2C83EA87006CAD53 /* Images.swift in Sources */,
 				813200562C80C2E1006CAD53 /* Serie.swift in Sources */,
 				813200492C7FAC3A006CAD53 /* Match.swift in Sources */,
 			);
