@@ -11,6 +11,7 @@ final class MatchesListViewModel: MatchesListDataSourceable {
     
     @Published var matches: [Match] = []
     @Published var isLoading: Bool = true
+    @Published var showDownloadError: Bool = false
     @Published var isShowingSplashScreen: Bool = true
     
     private let matchService: MatchServicing
@@ -32,14 +33,17 @@ final class MatchesListViewModel: MatchesListDataSourceable {
                 self.isLoading = false
             }
         } catch {
-            print(error)
+            DispatchQueue.main.async {
+                self.showDownloadError = true
+            }
         }
     }
     
     func refreshMatches() async {
-        await MainActor.run {
-            matches = []
-            isLoading = true
+        DispatchQueue.main.async {
+            self.matches = []
+            self.isLoading = true
+            self.showDownloadError = false
         }
         await requestMatches()
     }

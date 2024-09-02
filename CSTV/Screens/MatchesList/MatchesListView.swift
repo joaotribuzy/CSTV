@@ -10,6 +10,7 @@ import SwiftUI
 protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
     var isLoading: Bool { get }
+    var showDownloadError: Bool { get set }
     func requestMatches() async
     func refreshMatches() async
     func requestOpponentsImages(for opponents: [Opponent]) async
@@ -54,6 +55,17 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         .accentColor(.primary)
         .task(priority: .high) {
             await viewModel.requestMatches()
+        }
+        .alert(isPresented: $viewModel.showDownloadError) {
+            Alert(
+                title: Text("Que pena..."),
+                message: Text("Tivemos um problema ao obter o seu conteúdo T-T"),
+                dismissButton: .default(Text("Tentar novamente"), action: {
+                    Task {
+                        await viewModel.refreshMatches()
+                    }
+                })
+            )
         }
     }
     
