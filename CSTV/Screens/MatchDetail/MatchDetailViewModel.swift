@@ -10,6 +10,7 @@ import Foundation
 final class MatchDetailViewModel: MatchDetailDataSourceable {
     
     @Published var match: Match
+    @Published var isLoading: Bool = true
     @Published var leadingPlayes: [Player] = []
     @Published var trailingPlayes: [Player] = []
     
@@ -28,6 +29,7 @@ final class MatchDetailViewModel: MatchDetailDataSourceable {
             DispatchQueue.main.async {
                 self.leadingPlayes = leadingTeam.players
                 self.trailingPlayes = trailingTeam.players
+                self.isLoading = false
             }
         } catch {
             print(error)

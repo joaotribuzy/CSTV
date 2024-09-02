@@ -46,11 +46,11 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
             .navigationTitle("Partidas")
             .toolbarBackground(Colors.primaryBackground, for: .navigationBar)
             .background(Colors.primaryBackground)
-            task(priority: .high) {
-                await viewModel.requestMatches()
-            }
         }
         .accentColor(.primary)
+        .task(priority: .high) {
+            await viewModel.requestMatches()
+        }
     }
     
     func matchCell(match: Binding<Match>) -> some View {

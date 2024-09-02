@@ -9,6 +9,7 @@ import SwiftUI
 
 protocol MatchDetailDataSourceable: ObservableObject {
     var match: Match { get }
+    var isLoading: Bool { get }
     var leadingPlayes: [Player] { get }
     var trailingPlayes: [Player] { get }
     func requestTeamData() async
@@ -22,28 +23,34 @@ struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
     var body: some View {
         VStack(spacing: .zero) {
             customNavigationBar
-            ScrollView {
-                VStack {
-                    VersusFlags(opponents: viewModel.match.opponents)
-                        .padding(.top, Layout.innerVerticalSpacing)
-                    
-                    Text(viewModel.match.timeDescription)
-                        .font(Fonts.detailViewTime)
-                        .padding(.top, Layout.innerVerticalSpacing)
-                    
-                    HStack(alignment: .top, spacing: Layout.playerGridSpacing) {
-                        LazyVStack(spacing: Layout.playerGridSpacing) {
-                            ForEach(viewModel.leadingPlayes) { player in
-                                PlayerLeadingFlag(player: player)
+            Group {
+                if !viewModel.isLoading {
+                    ScrollView {
+                        VStack {
+                            VersusFlags(opponents: viewModel.match.opponents)
+                                .padding(.top, Layout.innerVerticalSpacing)
+                            
+                            Text(viewModel.match.timeDescription)
+                                .font(Fonts.detailViewTime)
+                                .padding(.top, Layout.innerVerticalSpacing)
+                            
+                            HStack(alignment: .top, spacing: Layout.playerGridSpacing) {
+                                LazyVStack(spacing: Layout.playerGridSpacing) {
+                                    ForEach(viewModel.leadingPlayes) { player in
+                                        PlayerLeadingFlag(player: player)
+                                    }
+                                }
+                                LazyVStack(spacing: Layout.playerGridSpacing) {
+                                    ForEach(viewModel.trailingPlayes) { player in
+                                        PlayerTrailingFlag(player: player)
+                                    }
+                                }
                             }
-                        }
-                        LazyVStack(spacing: Layout.playerGridSpacing) {
-                            ForEach(viewModel.trailingPlayes) { player in
-                                PlayerTrailingFlag(player: player)
-                            }
+                            .padding(.top, Layout.innerVerticalSpacing)
                         }
                     }
-                    .padding(.top, Layout.innerVerticalSpacing)
+                } else {
+                    ProgressView()
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
