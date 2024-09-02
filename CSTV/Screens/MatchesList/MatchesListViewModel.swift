@@ -5,12 +5,13 @@
 //  Created by João Tribuzy on 28/08/24.
 //
 
-import Foundation
+import SwiftUI
 
 final class MatchesListViewModel: MatchesListDataSourceable {
     
     @Published var matches: [Match] = []
     @Published var isLoading: Bool = true
+    @Published var isShowingSplashScreen: Bool = true
     
     private let matchService: MatchServicing
     private let imageService: ImageService
@@ -47,7 +48,7 @@ final class MatchesListViewModel: MatchesListDataSourceable {
                 guard let opponentIndex = self.matches[matchIndex].opponents.firstIndex(where: { team in
                     return opponent.id == team.id
                 }) else { return }
-                        
+                
                 guard let url = opponent.imageUrl?.getThumbUrl() else { return }
                 
                 let dataURL = try await imageService.fetchDataImageURL(from: url)
@@ -56,7 +57,7 @@ final class MatchesListViewModel: MatchesListDataSourceable {
                     self.matches[matchIndex].opponents[opponentIndex].imageDataUrl = dataURL
                 }
             }
-
+            
         } catch {
             print(error)
         }
@@ -67,7 +68,7 @@ final class MatchesListViewModel: MatchesListDataSourceable {
             guard let matchIndex = self.matches.firstIndex(where: { match in
                 return match.league.id == league.id
             }) else { return }
-                    
+            
             guard let url = league.imageUrl?.getThumbUrl() else { return }
             
             let dataUrl = try await imageService.fetchDataImageURL(from: url)
@@ -87,4 +88,11 @@ final class MatchesListViewModel: MatchesListDataSourceable {
         )
     }
     
+    func requestHideSplashScreen() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            withAnimation {
+                self.isShowingSplashScreen = false
+            }
+        }
+    }
 }

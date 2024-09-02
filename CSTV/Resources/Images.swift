@@ -9,4 +9,5 @@ import SwiftUI
 
 enum Images {
     static var arrowBackwards = Image(systemName: "arrow.backward")
+    static var fuzeLogo = Image("fuzeLogo")
 }

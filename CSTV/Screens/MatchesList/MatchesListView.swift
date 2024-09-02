@@ -10,10 +10,12 @@ import SwiftUI
 protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
     var isLoading: Bool { get }
+    var isShowingSplashScreen: Bool { get }
     func requestMatches() async
     func requestOpponentsImages(for opponents: [Opponent]) async
     func requestLeagueImage(for league: League) async
     func requestDetailViewModel(for match: Match) -> MatchDetailViewModel
+    func requestHideSplashScreen()
 }
 
 struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
@@ -21,35 +23,42 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
-        NavigationView {
-            Group {
-                if !viewModel.isLoading {
-                    ScrollView {
-                        LazyVStack(spacing: Layout.contentVerticalSpacing) {
-                            ForEach($viewModel.matches) { match in
-                                NavigationLink(
-                                    destination: MatchDetailView(
-                                        viewModel: viewModel.requestDetailViewModel(for: match.wrappedValue)
-                                    )
-                                ) {
-                                    matchCell(match: match)
+        if viewModel.isShowingSplashScreen {
+            SplashScreen()
+                .onAppear{
+                    viewModel.requestHideSplashScreen()
+                }
+        } else {
+            NavigationView {
+                Group {
+                    if !viewModel.isLoading {
+                        ScrollView {
+                            LazyVStack(spacing: Layout.contentVerticalSpacing) {
+                                ForEach($viewModel.matches) { match in
+                                    NavigationLink(
+                                        destination: MatchDetailView(
+                                            viewModel: viewModel.requestDetailViewModel(for: match.wrappedValue)
+                                        )
+                                    ) {
+                                        matchCell(match: match)
+                                    }
                                 }
                             }
+                            .padding(.horizontal, Layout.contentHorizontalPadding)
                         }
-                        .padding(.horizontal, Layout.contentHorizontalPadding)
+                    } else {
+                        ProgressView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                } else {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
+                .navigationTitle("Partidas")
+                .toolbarBackground(Colors.primaryBackground, for: .navigationBar)
+                .background(Colors.primaryBackground)
             }
-            .navigationTitle("Partidas")
-            .toolbarBackground(Colors.primaryBackground, for: .navigationBar)
-            .background(Colors.primaryBackground)
-        }
-        .accentColor(.primary)
-        .task(priority: .high) {
-            await viewModel.requestMatches()
+            .accentColor(.primary)
+            .task(priority: .high) {
+                await viewModel.requestMatches()
+            }
         }
     }
     
