@@ -31,7 +31,7 @@ struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
                         .font(Fonts.detailViewTime)
                         .padding(.top, Layout.innerVerticalSpacing)
                     
-                    HStack(spacing: Layout.playerGridSpacing) {
+                    HStack(alignment: .top, spacing: Layout.playerGridSpacing) {
                         VStack(spacing: Layout.playerGridSpacing) {
                             ForEach(viewModel.leadingPlayes) { player in
                                 PlayerLeadingFlag(player: player)

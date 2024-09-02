@@ -31,11 +31,17 @@ struct PlayerLeadingFlag: View {
             }
             HStack {
                 Spacer()
-                RoundedRectangle(cornerRadius: Layout.imageCornerRadius)
-                    .fill(Colors.placeholderImage)
-                    .frame(width: Layout.imageDimension, height: Layout.imageDimension)
-                    .padding(.trailing, Layout.imageTrailingPadding)
-                    .padding(.top, Layout.imageTopPadding)
+                AsyncImage(url: player.imageUrl?.getThumbUrl()) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    Colors.placeholderImage
+                }
+                .frame(width: Layout.imageDimension, height: Layout.imageDimension)
+                .clipShape(RoundedRectangle(cornerRadius: Layout.imageCornerRadius))
+                .padding(.trailing, Layout.imageTrailingPadding)
+                .padding(.top, Layout.imageTopPadding)
             }
         }
     }
