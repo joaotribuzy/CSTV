@@ -12,6 +12,7 @@ protocol MatchesListDataSourceable: ObservableObject {
     func requestRunningMatches() async
     func requestUpcomingMatches() async
     func requestOpponentsImages(for opponents: [Opponent]) async
+    func requestLeagueImage(for league: League) async
     func requestDetailViewModel(for match: Match) -> MatchDetailViewModel
 }
 
@@ -87,7 +88,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     
     func leagueDescription(_ match: Binding<Match>) -> some View {
         HStack(spacing: Layout.leagueHStackSpacing) {
-            if let url = match.wrappedValue.league.imageUrl {
+            if let url = match.wrappedValue.league.imageDataUrl {
                 AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { phase in
                     if case .success(let image) = phase {
                         image
@@ -103,6 +104,9 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
         }
         .padding(.vertical, Layout.leagueVerticalSpacing)
         .padding(.horizontal, Layout.leagueHorizontalSpacing)
+        .task {
+            await viewModel.requestLeagueImage(for: match.wrappedValue.league)
+        }
     }
     
 }

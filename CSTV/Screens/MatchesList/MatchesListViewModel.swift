@@ -70,6 +70,24 @@ final class MatchesListViewModel: MatchesListDataSourceable {
         }
     }
     
+    func requestLeagueImage(for league: League) async {
+        do {
+            guard let matchIndex = self.matches.firstIndex(where: { match in
+                return match.league.id == league.id
+            }) else { return }
+                    
+            guard let url = league.imageUrl?.getThumbUrl() else { return }
+            
+            let dataUrl = try await imageService.fetchDataImageURL(from: url)
+            
+            DispatchQueue.main.async {
+                self.matches[matchIndex].league.imageDataUrl = dataUrl
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     func requestDetailViewModel(for match: Match) -> MatchDetailViewModel {
         MatchDetailViewModel(
             match: match,
