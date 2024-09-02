@@ -7,12 +7,12 @@
 
 import Foundation
 
-final class MatchesListViewModel<Service: MatchServicing>: MatchesListDataSourceable {
+final class MatchesListViewModel: MatchesListDataSourceable {
     
     @Published var matches: [Match] = []
-    private let matchService: Service
+    private let matchService: MatchServicing
     
-    init(matchService: Service) {
+    init(matchService: MatchServicing) {
         self.matchService = matchService
     }
     
@@ -39,6 +39,13 @@ final class MatchesListViewModel<Service: MatchServicing>: MatchesListDataSource
         } catch {
             print(error)
         }
+    }
+    
+    func requestDetailViewModel(for match: Match) -> MatchDetailViewModel {
+        MatchDetailViewModel(
+            match: match,
+            playerService: TeamService()
+        )
     }
     
 }

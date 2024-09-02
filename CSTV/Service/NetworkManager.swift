@@ -13,11 +13,13 @@ protocol NetworkManaging {
 
 final class NetworkManager: NetworkManaging {
     
+    static var shared = NetworkManager()
+    
     private(set) var urlSession: URLSession
     private let timeotInteval: TimeInterval = 10
     private let headerFields = ["accept": "application/json"]
     
-    init(urlSession: URLSession) {
+    private init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
     

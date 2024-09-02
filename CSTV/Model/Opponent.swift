@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Opponent: Identifiable, Decodable {
+struct Opponent: Identifiable, Decodable, Hashable {
     var id: Int
     var name: String
     var imageUrl: URL?

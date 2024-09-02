@@ -9,6 +9,8 @@ import SwiftUI
 
 protocol MatchDetailDataSourceable: ObservableObject {
     var match: Match { get }
+    var leadingPlayes: [Player] { get }
+    var trailingPlayes: [Player] { get }
     func requestTeamData() async
 }
 
@@ -31,18 +33,14 @@ struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
                     
                     HStack(spacing: Layout.playerGridSpacing) {
                         VStack(spacing: Layout.playerGridSpacing) {
-                            PlayerLeadingFlag()
-                            PlayerLeadingFlag()
-                            PlayerLeadingFlag()
-                            PlayerLeadingFlag()
-                            PlayerLeadingFlag()
+                            ForEach(viewModel.leadingPlayes) { player in
+                                PlayerLeadingFlag(player: player)
+                            }
                         }
                         VStack(spacing: Layout.playerGridSpacing) {
-                            PlayerTrailingFlag()
-                            PlayerTrailingFlag()
-                            PlayerTrailingFlag()
-                            PlayerTrailingFlag()
-                            PlayerTrailingFlag()
+                            ForEach(viewModel.trailingPlayes) { player in
+                                PlayerTrailingFlag(player: player)
+                            }
                         }
                     }
                     .padding(.top, Layout.innerVerticalSpacing)
@@ -52,6 +50,9 @@ struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
             .toolbar(.hidden)
         }
         .background(Colors.primaryBackground)
+        .task {
+            await viewModel.requestTeamData()
+        }
     }
     
     var customNavigationBar: some View {

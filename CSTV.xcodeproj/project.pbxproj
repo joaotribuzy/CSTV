@@ -37,8 +37,9 @@
 		8132007F2C83F23E006CAD53 /* OpponentFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8132007E2C83F23E006CAD53 /* OpponentFlag.swift */; };
 		813200812C83F7A8006CAD53 /* PlayerLeadingFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200802C83F7A8006CAD53 /* PlayerLeadingFlag.swift */; };
 		813200832C83FD40006CAD53 /* PlayerTrailingFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200822C83FD40006CAD53 /* PlayerTrailingFlag.swift */; };
-		813200852C85227D006CAD53 /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200842C85227D006CAD53 /* PlayerService.swift */; };
+		813200852C85227D006CAD53 /* TeamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200842C85227D006CAD53 /* TeamService.swift */; };
 		813200872C852A0D006CAD53 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200862C852A0D006CAD53 /* Player.swift */; };
+		813200892C853572006CAD53 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200882C853572006CAD53 /* Team.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,8 +86,9 @@
 		8132007E2C83F23E006CAD53 /* OpponentFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentFlag.swift; sourceTree = "<group>"; };
 		813200802C83F7A8006CAD53 /* PlayerLeadingFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLeadingFlag.swift; sourceTree = "<group>"; };
 		813200822C83FD40006CAD53 /* PlayerTrailingFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTrailingFlag.swift; sourceTree = "<group>"; };
-		813200842C85227D006CAD53 /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		813200842C85227D006CAD53 /* TeamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamService.swift; sourceTree = "<group>"; };
 		813200862C852A0D006CAD53 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		813200882C853572006CAD53 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				813200572C80C4AA006CAD53 /* Opponent.swift */,
 				813200592C80E748006CAD53 /* Status.swift */,
 				813200862C852A0D006CAD53 /* Player.swift */,
+				813200882C853572006CAD53 /* Team.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,7 +207,7 @@
 			children = (
 				813200512C7FBF09006CAD53 /* NetworkManager.swift */,
 				8132004D2C7FB1C7006CAD53 /* MatchService.swift */,
-				813200842C85227D006CAD53 /* PlayerService.swift */,
+				813200842C85227D006CAD53 /* TeamService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -373,11 +376,12 @@
 				8132007D2C83F1D5006CAD53 /* VersusFlags.swift in Sources */,
 				813200582C80C4AA006CAD53 /* Opponent.swift in Sources */,
 				8132004B2C7FAD02006CAD53 /* MatchesListViewModel.swift in Sources */,
+				813200892C853572006CAD53 /* Team.swift in Sources */,
 				813200872C852A0D006CAD53 /* Player.swift in Sources */,
 				8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */,
 				813200612C813668006CAD53 /* Colors+Extensions.swift in Sources */,
 				8132007B2C83EA87006CAD53 /* Images.swift in Sources */,
-				813200852C85227D006CAD53 /* PlayerService.swift in Sources */,
+				813200852C85227D006CAD53 /* TeamService.swift in Sources */,
 				813200562C80C2E1006CAD53 /* Serie.swift in Sources */,
 				8132007F2C83F23E006CAD53 /* OpponentFlag.swift in Sources */,
 				813200492C7FAC3A006CAD53 /* Match.swift in Sources */,

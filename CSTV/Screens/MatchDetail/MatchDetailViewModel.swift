@@ -8,13 +8,29 @@
 import Foundation
 
 final class MatchDetailViewModel: MatchDetailDataSourceable {
-    var match: Match
     
-    init(match: Match) {
+    @Published var match: Match
+    @Published var leadingPlayes: [Player] = []
+    @Published var trailingPlayes: [Player] = []
+    
+    private let playerService: TeamServicing
+    
+    init(match: Match, playerService: TeamService) {
         self.match = match
+        self.playerService = playerService
     }
     
     func requestTeamData() async {
-        
+        do {
+            let leadingTeam = try await playerService.fetch(team: match.opponents[0].id)
+            let trailingTeam = try await playerService.fetch(team: match.opponents[1].id)
+
+            DispatchQueue.main.async {
+                self.leadingPlayes = leadingTeam.players
+                self.trailingPlayes = trailingTeam.players
+            }
+        } catch {
+            print(error)
+        }
     }
 }

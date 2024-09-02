@@ -11,6 +11,8 @@ import SwiftUI
 
 struct PlayerTrailingFlag: View {
     
+    private(set) var player: Player
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: Layout.backgroundCornerRadiuss)
@@ -19,9 +21,9 @@ struct PlayerTrailingFlag: View {
                 .padding(.trailing, Layout.backGroundTrailingPadding)
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Nickname")
+                    Text(player.nickname)
                         .font(Fonts.nickname)
-                    Text("Nome do jogador")
+                    Text(player.fullName)
                         .font(Fonts.playerName)
                         .foregroundStyle(Colors.secondaryFont)
                 }
@@ -52,8 +54,4 @@ private extension PlayerTrailingFlag {
         static var imageLeadingPadding: CGFloat { 12 }
         static var imageTopPadding: CGFloat { -12 }
     }
-}
-
-#Preview {
-    PlayerTrailingFlag()
 }

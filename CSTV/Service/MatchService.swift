@@ -18,7 +18,7 @@ final class MatchService: MatchServicing {
     private let baseUrlString = RequestComponents.matchesBaseUrl.rawValue
     private let apiKey = "kruSfdDSRCwrG7A_oqc08KZbCqaYg8iMYJSAKpsfepv0Gj-3wNI"
     
-    init(networkManager: NetworkManaging) {
+    init(networkManager: NetworkManaging = NetworkManager.shared) {
         self.networkManager = networkManager
     }
     

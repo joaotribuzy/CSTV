@@ -10,11 +10,7 @@ import SwiftUI
 @main
 struct CSTVApp: App {
     
-    private let matchService: MatchService = MatchService(
-        networkManager: NetworkManager(
-            urlSession: URLSession.shared
-        )
-    )
+    private let matchService: MatchServicing = MatchService()
     
     var body: some Scene {
         WindowGroup {

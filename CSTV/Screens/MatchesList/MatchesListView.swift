@@ -11,6 +11,7 @@ protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
     func requestRunningMatches() async
     func requestUpcomingMatches() async
+    func requestDetailViewModel(for match: Match) -> MatchDetailViewModel
 }
 
 struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
@@ -22,7 +23,11 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
             ScrollView {
                 VStack(spacing: Layout.contentVerticalSpacing) {
                     ForEach($viewModel.matches) { match in
-                        NavigationLink(destination: MatchDetailView(viewModel: MatchDetailViewModel(match: match.wrappedValue))) {
+                        NavigationLink(
+                            destination: MatchDetailView(
+                                viewModel: viewModel.requestDetailViewModel(for: match.wrappedValue)
+                            )
+                        ) {
                             matchCell(match: match)
                         }
                     }
@@ -49,7 +54,7 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
                 timeLabel(match.wrappedValue)
             }
             VersusFlags(opponents: match.opponents.wrappedValue)
-            .padding(.top, Layout.cellElementsSpacing)
+                .padding(.top, Layout.cellElementsSpacing)
             Divider()
                 .frame(height: Layout.dividerHeight)
                 .background(.white)
@@ -121,5 +126,5 @@ private extension MatchesListView {
 }
 
 #Preview {
-    MatchesListView(viewModel: MatchesListViewModel(matchService: MatchService(networkManager: NetworkManager(urlSession: URLSession.shared))))
+    MatchesListView(viewModel: MatchesListViewModel(matchService: MatchService()))
 }

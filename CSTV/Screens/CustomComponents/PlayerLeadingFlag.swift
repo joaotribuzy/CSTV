@@ -9,18 +9,20 @@ import SwiftUI
 
 struct PlayerLeadingFlag: View {
     
+    private(set) var player: Player
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: Layout.backgroundCornerRadiuss)
                 .fill(Colors.secondaryBackground)
                 .frame(height: Layout.backgroundHeight)
                 .padding(.leading, Layout.backGroundLeadingPadding)
-            HStack {
+            HStack(alignment: .top) {
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("Nickname")
+                    Text(player.nickname)
                         .font(Fonts.nickname)
-                    Text("Nome do jogador")
+                    Text(player.fullName)
                         .font(Fonts.playerName)
                         .foregroundStyle(Colors.secondaryFont)
                 }
@@ -50,8 +52,4 @@ private extension PlayerLeadingFlag {
         static var imageTrailingPadding: CGFloat { 12 }
         static var imageTopPadding: CGFloat { -12 }
     }
-}
-
-#Preview {
-    PlayerLeadingFlag()
 }
