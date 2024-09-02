@@ -11,6 +11,7 @@ protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
     var isLoading: Bool { get }
     func requestMatches() async
+    func refreshMatches() async
     func requestOpponentsImages(for opponents: [Opponent]) async
     func requestLeagueImage(for league: League) async
     func requestDetailViewModel(for match: Match) -> MatchDetailViewModel
@@ -37,6 +38,9 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
                             }
                         }
                         .padding(.horizontal, Layout.contentHorizontalPadding)
+                    }
+                    .refreshable {
+                        await viewModel.refreshMatches()
                     }
                 } else {
                     ProgressView()

@@ -36,6 +36,14 @@ final class MatchesListViewModel: MatchesListDataSourceable {
         }
     }
     
+    func refreshMatches() async {
+        await MainActor.run {
+            matches = []
+            isLoading = true
+        }
+        await requestMatches()
+    }
+    
     func requestOpponentsImages(for opponents: [Opponent]) async {
         do {
             
