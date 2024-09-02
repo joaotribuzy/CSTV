@@ -11,10 +11,11 @@ import SwiftUI
 struct CSTVApp: App {
     
     private let matchService: MatchServicing = MatchService()
+    private let imageService: ImageService = ImageService()
     
     var body: some Scene {
         WindowGroup {
-            MatchesListView(viewModel: MatchesListViewModel(matchService: matchService))
+            MatchesListView(viewModel: MatchesListViewModel(matchService: matchService, imageService: imageService))
         }
     }
 }

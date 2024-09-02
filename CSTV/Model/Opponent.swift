@@ -11,6 +11,7 @@ struct Opponent: Identifiable, Decodable, Hashable {
     var id: Int
     var name: String
     var imageUrl: URL?
+    var imageDataUrl: URL?
     
     enum CodingKeys: String, CodingKey {
         case id, name

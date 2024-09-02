@@ -9,6 +9,7 @@ import Foundation
 
 protocol NetworkManaging {
     func get<T>(url: URL?, type: T.Type) async throws -> T where T : Decodable
+    func getEncodedUrlString(for url: URL?) async throws -> String
 }
 
 final class NetworkManager: NetworkManaging {
@@ -48,6 +49,15 @@ final class NetworkManager: NetworkManaging {
             throw NetworkError.decodingFailed
         }
         
+    }
+    
+    func getEncodedUrlString(for url: URL?) async throws -> String {
+        
+        guard let url = url else { throw NetworkError.badUrl }
+        
+        let (data, _) = try await urlSession.data(from: url)
+        
+        return data.base64EncodedString()
     }
     
 }

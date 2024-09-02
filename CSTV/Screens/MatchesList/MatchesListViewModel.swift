@@ -11,9 +11,11 @@ final class MatchesListViewModel: MatchesListDataSourceable {
     
     @Published var matches: [Match] = []
     private let matchService: MatchServicing
+    private let imageService: ImageService
     
-    init(matchService: MatchServicing) {
+    init(matchService: MatchServicing, imageService: ImageService) {
         self.matchService = matchService
+        self.imageService = imageService
     }
     
     func requestRunningMatches() async {
@@ -36,6 +38,33 @@ final class MatchesListViewModel: MatchesListDataSourceable {
             DispatchQueue.main.async {
                 self.matches = self.matches + upcomingMatches
             }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func requestOpponentsImages(for opponents: [Opponent]) async {
+        do {
+            
+            guard let matchIndex = self.matches.firstIndex(where: { match in
+                return match.opponents.contains(opponents)
+            }) else { return }
+            
+            for opponent in opponents {
+                
+                guard let opponentIndex = self.matches[matchIndex].opponents.firstIndex(where: { team in
+                    return opponent.id == team.id
+                }) else { return }
+                        
+                guard let url = opponent.imageUrl?.getThumbUrl() else { return }
+                
+                let dataURL = try await imageService.fetchDataImageURL(from: url)
+                
+                DispatchQueue.main.async {
+                    self.matches[matchIndex].opponents[opponentIndex].imageDataUrl = dataURL
+                }
+            }
+
         } catch {
             print(error)
         }

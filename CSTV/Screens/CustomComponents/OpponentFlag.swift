@@ -14,8 +14,8 @@ struct OpponentFlag: View {
     var body: some View {
         VStack(spacing: Layout.teamFlagInnerSpacing) {
             Group {
-                if let url = opponent.imageUrl?.getThumbUrl() {
-                    AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { phase in
+                if let url = opponent.imageDataUrl {
+                    AsyncImage(url: url) { phase in
                         switch phase {
                         case .empty:
                             ProgressView()
