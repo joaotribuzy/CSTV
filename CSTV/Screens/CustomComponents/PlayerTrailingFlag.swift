@@ -23,9 +23,11 @@ struct PlayerTrailingFlag: View {
                 VStack(alignment: .leading) {
                     Text(player.nickname)
                         .font(Fonts.nickname)
+                        .lineLimit(1)
                     Text(player.fullName)
                         .font(Fonts.playerName)
                         .foregroundStyle(Colors.secondaryFont)
+                        .lineLimit(1)
                 }
                 .foregroundColor(.primary)
                 .padding(.leading, Layout.infoLeadingPadding)
