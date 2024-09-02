@@ -9,8 +9,8 @@ import SwiftUI
 
 protocol MatchesListDataSourceable: ObservableObject {
     var matches: [Match] { get set }
-    func requestRunningMatches() async
-    func requestUpcomingMatches() async
+    var isLoading: Bool { get }
+    func requestMatches() async
     func requestOpponentsImages(for opponents: [Opponent]) async
     func requestLeagueImage(for league: League) async
     func requestDetailViewModel(for match: Match) -> MatchDetailViewModel
@@ -22,29 +22,33 @@ struct MatchesListView<ViewModel: MatchesListDataSourceable>: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVStack(spacing: Layout.contentVerticalSpacing) {
-                    ForEach($viewModel.matches) { match in
-                        NavigationLink(
-                            destination: MatchDetailView(
-                                viewModel: viewModel.requestDetailViewModel(for: match.wrappedValue)
-                            )
-                        ) {
-                            matchCell(match: match)
+            Group {
+                if !viewModel.isLoading {
+                    ScrollView {
+                        LazyVStack(spacing: Layout.contentVerticalSpacing) {
+                            ForEach($viewModel.matches) { match in
+                                NavigationLink(
+                                    destination: MatchDetailView(
+                                        viewModel: viewModel.requestDetailViewModel(for: match.wrappedValue)
+                                    )
+                                ) {
+                                    matchCell(match: match)
+                                }
+                            }
                         }
+                        .padding(.horizontal, Layout.contentHorizontalPadding)
                     }
-                }
-                .padding(.horizontal, Layout.contentHorizontalPadding)
-                .task(priority: .high) {
-                    await viewModel.requestRunningMatches()
-                }
-                .task {
-                    await viewModel.requestUpcomingMatches()
+                } else {
+                    ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
             .navigationTitle("Partidas")
             .toolbarBackground(Colors.primaryBackground, for: .navigationBar)
             .background(Colors.primaryBackground)
+            task(priority: .high) {
+                await viewModel.requestMatches()
+            }
         }
         .accentColor(.primary)
     }

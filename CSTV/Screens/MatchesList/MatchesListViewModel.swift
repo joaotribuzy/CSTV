@@ -10,6 +10,8 @@ import Foundation
 final class MatchesListViewModel: MatchesListDataSourceable {
     
     @Published var matches: [Match] = []
+    @Published var isLoading: Bool = true
+    
     private let matchService: MatchServicing
     private let imageService: ImageService
     
@@ -18,25 +20,15 @@ final class MatchesListViewModel: MatchesListDataSourceable {
         self.imageService = imageService
     }
     
-    func requestRunningMatches() async {
+    func requestMatches() async {
         do {
             let runningMatches = try await matchService.fetchRunningMatches()
-
-            DispatchQueue.main.async {
-                self.matches = self.matches + runningMatches
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
-    func requestUpcomingMatches() async {
-        do {
             let upcomingMatches = try await matchService.fetchUpcomingMatches()
                 .filter { $0.opponents.count >= 2}
-
+            
             DispatchQueue.main.async {
-                self.matches = self.matches + upcomingMatches
+                self.matches = runningMatches + upcomingMatches
+                self.isLoading = false
             }
         } catch {
             print(error)
