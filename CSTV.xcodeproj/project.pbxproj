@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8121C5B22C861265008E6B3D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8121C5B12C861265008E6B3D /* ImageService.swift */; };
 		8121C5B52C8632E1008E6B3D /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8121C5B42C8632E1008E6B3D /* SplashScreen.swift */; };
+		8121C5B82C863912008E6B3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8121C5B72C863912008E6B3D /* ContentView.swift */; };
+		8121C5BA2C86395A008E6B3D /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8121C5B92C86395A008E6B3D /* ContentViewModel.swift */; };
 		813200192C7FA522006CAD53 /* CSTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813200182C7FA522006CAD53 /* CSTVApp.swift */; };
 		8132001D2C7FA523006CAD53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8132001C2C7FA523006CAD53 /* Assets.xcassets */; };
 		813200202C7FA523006CAD53 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8132001F2C7FA523006CAD53 /* Preview Assets.xcassets */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		8121C5B12C861265008E6B3D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		8121C5B42C8632E1008E6B3D /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		8121C5B72C863912008E6B3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8121C5B92C86395A008E6B3D /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		813200152C7FA522006CAD53 /* CSTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813200182C7FA522006CAD53 /* CSTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApp.swift; sourceTree = "<group>"; };
 		8132001C2C7FA523006CAD53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,6 +125,15 @@
 			path = SplashScreen;
 			sourceTree = "<group>";
 		};
+		8121C5B62C863904008E6B3D /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				8121C5B72C863912008E6B3D /* ContentView.swift */,
+				8121C5B92C86395A008E6B3D /* ContentViewModel.swift */,
+			);
+			path = ContentView;
+			sourceTree = "<group>";
+		};
 		8132000C2C7FA522006CAD53 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +185,7 @@
 		813200422C7FA9EC006CAD53 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8121C5B62C863904008E6B3D /* ContentView */,
 				8121C5B32C8632CE008E6B3D /* SplashScreen */,
 				813200652C815AC7006CAD53 /* CustomComponents */,
 				813200442C7FAB39006CAD53 /* MatchesList */,
@@ -396,8 +410,10 @@
 				813200872C852A0D006CAD53 /* Player.swift in Sources */,
 				8132004E2C7FB1C7006CAD53 /* MatchService.swift in Sources */,
 				813200612C813668006CAD53 /* Colors+Extensions.swift in Sources */,
+				8121C5BA2C86395A008E6B3D /* ContentViewModel.swift in Sources */,
 				8132007B2C83EA87006CAD53 /* Images.swift in Sources */,
 				813200852C85227D006CAD53 /* TeamService.swift in Sources */,
+				8121C5B82C863912008E6B3D /* ContentView.swift in Sources */,
 				813200562C80C2E1006CAD53 /* Serie.swift in Sources */,
 				8132007F2C83F23E006CAD53 /* OpponentFlag.swift in Sources */,
 				813200492C7FAC3A006CAD53 /* Match.swift in Sources */,

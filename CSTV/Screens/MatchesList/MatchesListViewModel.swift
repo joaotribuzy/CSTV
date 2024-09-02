@@ -87,12 +87,4 @@ final class MatchesListViewModel: MatchesListDataSourceable {
             playerService: TeamService()
         )
     }
-    
-    func requestHideSplashScreen() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            withAnimation {
-                self.isShowingSplashScreen = false
-            }
-        }
-    }
 }

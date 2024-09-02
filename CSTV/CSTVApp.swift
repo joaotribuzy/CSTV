@@ -10,12 +10,11 @@ import SwiftUI
 @main
 struct CSTVApp: App {
     
-    private let matchService: MatchServicing = MatchService()
-    private let imageService: ImageService = ImageService()
+    private let contentViewModel: ContentViewModel = ContentViewModel()
     
     var body: some Scene {
         WindowGroup {
-            MatchesListView(viewModel: MatchesListViewModel(matchService: matchService, imageService: imageService))
+            ContentView(viewModel: contentViewModel)
         }
     }
 }
