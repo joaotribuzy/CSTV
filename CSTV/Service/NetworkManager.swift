@@ -17,7 +17,7 @@ final class NetworkManager: NetworkManaging {
     static var shared = NetworkManager()
     
     private(set) var urlSession: URLSession
-    private let timeotInteval: TimeInterval = 10
+    private let timeotInteval: TimeInterval = 100
     private let headerFields = ["accept": "application/json"]
     
     private init(urlSession: URLSession = .shared) {

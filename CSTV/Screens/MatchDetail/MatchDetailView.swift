@@ -32,12 +32,12 @@ struct MatchDetailView<ViewModel: MatchDetailDataSourceable>: View {
                         .padding(.top, Layout.innerVerticalSpacing)
                     
                     HStack(alignment: .top, spacing: Layout.playerGridSpacing) {
-                        VStack(spacing: Layout.playerGridSpacing) {
+                        LazyVStack(spacing: Layout.playerGridSpacing) {
                             ForEach(viewModel.leadingPlayes) { player in
                                 PlayerLeadingFlag(player: player)
                             }
                         }
-                        VStack(spacing: Layout.playerGridSpacing) {
+                        LazyVStack(spacing: Layout.playerGridSpacing) {
                             ForEach(viewModel.trailingPlayes) { player in
                                 PlayerTrailingFlag(player: player)
                             }
